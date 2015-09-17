@@ -1,12 +1,15 @@
-#!/usr/bin/python3
+#!/usr/bin/python
+# views.py - generates HTML pages using templates, databases, and logic
 from flask import render_template
 from app import app
 
-# index HTML page, lists all posts
+# index page, lists all threads in database
 @app.route('/')
 @app.route('/index')
 def index():
-	threads = [  # fake array of threads
+	# generate this object using the SQL command:
+	# SELECT * FROM threads ORDER BY lastbumptime DESC;
+	threads = [	# example thread objects
 		{
 			'threadid' : 123456,
 			'title': 'This thread is an example of the first thread.',
@@ -30,7 +33,9 @@ def index():
 @app.route('/thread/123456')
 @app.route('/thread/123457')
 def threads():
-	posts = [  # fake array of posts
+	# generate this object using the SQL command:
+	# SELECT * FROM posts WHERE threadid='<threadid>' ORDER BY postnum;
+	posts = [	# example post objects
 		{
 			'postnum' : 1,
 			'postername': 'Anonymous',
