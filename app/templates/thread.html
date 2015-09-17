@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+		<meta content="text/html; charset=UTF-8" http-equiv="content-type">
+		<title>{{ title }}</title>
+		<script type="text/javascript" src="{{ url_for('static', filename='prettify.js') }}"></script> <!-- syntax highlighting -->
+		<link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+	</head>
+<body id="threadpage">
+	</div>
+	<a href="../">Return</a>
+	<br>
+<hr>
+	<div class="subject">
+		<a href="./"><h2>{{ title }}</h2></a>
+	</div>
+	{% for post in posts %}
+	<div class="post">
+		<div class="posthead">
+			<span class="num">{{ post.postnum }}</span> 
+			Name: <span class="name">{{ post.postername }}</span> 
+			{% if post.postertrip is defined %}
+				<span class="trip">{{ post.postertrip }}</span>
+			{% endif %} : {{ post.posterdate }}
+		</div>
+		<div class="postbody">{{ post.post|safe }}</div>
+	</div>
+	{% endfor %}
+<hr>
+<p style="margin-top:0px"><a href="../">Return</a>
+</body></html>

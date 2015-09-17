@@ -1,0 +1,64 @@
+<!--?xml version="1.0" encoding="UTF-8"?-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type">
+	<script src="{{ url_for('static', filename='sortable.js') }}"></script> <!-- Kyrogenix Lightweight Sorttable (until HTML5.1 anyway) - http://www.kryogenix.org/code/browser/sorttable/-->
+
+    <title>/{{ board }}/ - {{ title }} - All Threads - world4ch</title>
+    <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+</head>
+
+<body id="index">
+	<div class="shell">
+		<div class="head">
+			<br>
+
+			<h1 style="text-align:center;">/{{ board }}/ - {{ title }}</h1>
+		</div>
+	</div>
+
+	<div class="shell" id="threadlist">
+		<div class="head">
+			<center><p style="font-size: 10px">Double-click Column Titles to Sort Threads (requires Javascript)</p></center>
+			<table class="threads sortable">
+				<thead>
+					<tr>
+						<th nowrap="nowrap">Last Post</th>
+
+						<th nowrap="nowrap">First Post</th>
+
+						<th nowrap="nowrap">Thread ID</th>
+
+						<th nowrap="nowrap" width="100%">Subject</th>
+
+						<th nowrap="nowrap">Posts</th>
+					</tr>
+				</thead>
+
+				<!-- thread table entries, generated via for loop -->
+				<tbody>
+					{% for thread in threads %}
+					<tr>
+						<td nowrap="nowrap" style="font-size: 10px">{{ thread.lastposttime }}</td>
+
+						<td nowrap="nowrap" style="font-size: 10px">{{ thread.firstposttime }}</td>
+
+						<td>{{ thread.threadid }}</td>
+
+						<td>
+							<a href=
+							"./thread/{{ thread.threadid }}">{{ thread.title }}</a>
+						</td>
+
+						<td>{{ thread.numposts }}</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+				<!-- end of thread table entries -->
+				
+			</table>
+		</div>
+	</div>
+</body>
+</html>
