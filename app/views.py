@@ -2,53 +2,68 @@
 # views.py - generates HTML pages using templates, databases, and logic
 from flask import render_template
 from app import app
+import sqlite3
+from collections import defaultdict
+
+# connect to the database to store image metadata
+db_fname = "sjis-20140420.sqlite"
+
+# initialize thread list
+conn = sqlite3.connect(db_fname)
+c1 = conn.cursor()
+c1.execute('SELECT * FROM threads ORDER BY lastbumptime DESC;')
+thread_query = c1.fetchall()
+
+# insert thread list into dictionary
+threads = []
+for row in thread_query:
+	threads.append(
+		{
+			'threadid' : row[0],
+			'title' : row[1],
+			'board' : row[2],
+			'firstposttime' : row[3],
+			'lastposttime' : row[4],
+			'lastbumptime' : row[5],
+			'numposts' : row[6]
+		}
+	)
 
 # index page, lists all threads in database
 @app.route('/')
 @app.route('/index')
 def index():
-	# generate this object using the SQL command:
-	# SELECT * FROM threads ORDER BY lastbumptime DESC;
-	threads = [	# example thread objects
-		{
-			'threadid' : 123456,
-			'title': 'This thread is an example of the first thread.',
-			'firstposttime' : '1993-01-01 00:00',
-			'lastposttime': '1993-01-01 00:10',
-			'numposts' : '2'
-		},
-		{
-			'threadid' : 123457,
-			'title': 'This thread is an example of the second thread.',
-			'firstposttime' : '1993-01-01 12:00',
-			'lastposttime': '1993-01-01 23:00',
-			'numposts' : 21
-		}
-	]
-
+	
 	return render_template('index.html', board="sjis", title="Shift JIS Art", threads=threads)
 
-# threads page
-@app.route('/thread')
-@app.route('/thread/123456')
-@app.route('/thread/123457')
-def threads():
-	# generate this object using the SQL command:
-	# SELECT * FROM posts WHERE threadid='<threadid>' ORDER BY postnum;
-	posts = [	# example post objects
-		{
-			'postnum' : 1,
-			'postername': 'Anonymous',
-			'postertrip' : '',
-			'posterdate': '1993-01-01 00:00',
-			'post': 'Beautiful day in Portland!'
-		},
-		{
-			'postnum' : 2,
-			'postername': 'tanasinn',
-			'postertrip' : '!h430d09s',
-			'posterdate': '1993-01-01 00:10',
-			'post': 'don\'t think, feel... </br></br> <strong>and you will be tanasinn</strong>'
-		}
-	]
+# threads page, figure out which thread to display from URL
+@app.route('/thread/<int:url_thread_id>')
+def page(url_thread_id):
+	# generate list of threads
+	conn = sqlite3.connect(db_fname)
+	c = conn.cursor()
+	c.execute("""SELECT * FROM posts WHERE threadid = ? ORDER BY postnum""", [url_thread_id])
+	posts_query = c.fetchall()
+	
+	# insert thread list into dictionary
+	posts = []
+	for row in posts_query:
+		posts.append(
+			{
+				'threadid' : row[0],
+				'postnum' : row[1],
+				'postername' : row[2],
+				'postermeiru' : row[3],
+				'postertrip' : row[4],
+				'posterid' : row[5],
+				'posterdate' : row[6],
+				'post' : row[7]
+			}
+		)
+	
 	return render_template('thread.html', board="sjis", title="Example Thread", posts=posts)
+
+# Database Test page
+@app.route('/test')
+def test():
+	return(str(Posts.query_all()))
