@@ -19,7 +19,7 @@
 			<span class="num">{{ post.postnum }}</span> 
 			Name: <span class="name">{{ post.postername }}</span> 
 			{% if post.postertrip is defined %}
-				<span class="trip">{{ post.postertrip }}</span>
+				<span class="trip">{{ post.postertrip|safe  }}</span>
 			{% endif %} : {{ post.posterdate }}
 		</div>
 		<div class="postbody">{{ post.post|safe }}</div>

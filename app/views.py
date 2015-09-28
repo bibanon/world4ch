@@ -6,7 +6,7 @@ import sqlite3
 from collections import defaultdict
 
 # connect to the database to store image metadata
-db_fname = "sjis-20140420.sqlite"
+db_fname = "db.sqlite"
 
 # initialize thread list
 conn = sqlite3.connect(db_fname)
