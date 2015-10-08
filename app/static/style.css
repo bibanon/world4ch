@@ -60,6 +60,7 @@ div.shell-thread > div {
     color: #F00;
 	  line-height: 120%;
     font-size: 1.5em;
+    font-weight: bold;
 }
 .subject a {
     text-decoration: none;
@@ -81,6 +82,7 @@ div.shell-thread > div {
 	  line-height: 120%;
     font-size: 1.2em;
     font-weight: normal;
+    font-weight: bold;
 }
 .post .num {
     font-weight: bold;
@@ -96,6 +98,8 @@ div.shell-thread > div {
 .postbody {
     margin: 0.5em 0em 0.5em 2em;
     overflow: hidden;
+    font-family: "ＭＳ Ｐゴシック", "MS PGothic", Mona, "Mona Font";
+    font-size: 1.1em
 }
 /* Subback */
 #subback div.float {
