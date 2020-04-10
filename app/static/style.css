@@ -1,12 +1,12 @@
 @font-face {
-    font-family: Mona Font;
-    src: url('mona.ttf'); 
+  font-family: 'submona';
+  src: url('submona.woff') format('woff');
 }
 
 body {
     font-size: 13px;
     /* Japanese variable width fonts needed for viewing SJIS Art. Mona Font is included if you don't have any of these. */
-    font-family:"ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Osaka, "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", "Mona Font";
+    font-family: IPAMonaPGothic, 'IPA モナー Pゴシック', Monapo, Mona, 'MS Pgothic', 'MS Pゴシック', submona;
 /*  font-family: "DejaVu Sans", "Liberation Sans", Arial; */
 }
 .comment { display:none }
@@ -98,7 +98,7 @@ div.shell-thread > div {
 .postbody {
     margin: 0.5em 0em 0.5em 2em;
     overflow: hidden;
-    font-family: "ＭＳ Ｐゴシック", "MS PGothic", Mona, "Mona Font";
+    font-family: IPAMonaPGothic, 'IPA モナー Pゴシック', Monapo, Mona, 'MS Pgothic', 'MS Pゴシック', submona;
     font-size: 1.1em
 }
 /* Subback */

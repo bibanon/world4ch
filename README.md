@@ -2,6 +2,16 @@ This is a quick and dirty offline viewer developed by the Bibliotheca Anonoma to
 
 This specific version uses Python with Flask and the built-in SQLite library to display the text from the database. SQLite is decent enough to run a small archive, but for greater database support, we will use SQLAlchemy.
 
+## Shift JIS Submona Web Font
+
+Note that to properly support Shift JIS art as seen on the /sjis/ board, the following public domain web font is embedded and used for all text:
+
+https://github.com/pera/submona-web-font
+
+![image](https://user-images.githubusercontent.com/614893/79016570-65d68300-7b3d-11ea-8ba7-5159ec4175c3.png)
+
+![image](https://user-images.githubusercontent.com/614893/79016189-59055f80-7b3c-11ea-98a5-fdd9a29c77c4.png)
+
 ## Usage
 
 ### Download and Install the world4ch Thread Viewer

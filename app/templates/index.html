@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta content="text/html; charset=utf-8" http-equiv="content-type">
-	<script src="{{ url_for('static', filename='sorttable.js') }}"></script> <!-- Kyrogenix Lightweight Sorttable (until HTML5.1 anyway) - http://www.kryogenix.org/code/browser/sorttable/-->
+	<script src="{{ url_for('static', filename='sorttable.js') }}"></script> <!-- Kyrogenix Lightweight Sorttable (unfortunately HTML5.1 won't have sorttable, so javascript will always be necessary https://github.com/w3c/html/issues/56) - http://www.kryogenix.org/code/browser/sorttable/-->
 
     <title>world4ch: /{{ board }}/ - {{ title }}</title>
     <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
