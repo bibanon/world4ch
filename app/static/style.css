@@ -182,7 +182,7 @@ span.sage + span
 { color: blue !important; text-decoration: underline; }
 span.sage + span:hover { color: red !important; cursor: pointer; }
 
-/* Pretty printing styles. Used with prettify.js. */
+/* Pretty printing styles. Used with prettify.js from progrider, but ultimately unused
 .pln { color: #000 }
 .str { color: #080 }
 .kwd { color: #008 }
@@ -197,3 +197,4 @@ span.sage + span:hover { color: red !important; cursor: pointer; }
 .fun { color: red }
 .sage { color: blue !important; text-decoration: underline; }
 .sage:hover { color: red !important; cursor: pointer; }
+*/
