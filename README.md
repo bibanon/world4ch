@@ -1,13 +1,15 @@
 This is a quick and dirty offline viewer developed by the Bibliotheca Anonoma to display threads from the World4ch databases developed by [ghonsonb3120](https://archive.org/details/@ghonsonb3120) to the Internet Archive.
 
-This specific version uses Python 2.x with Flask and the built-in SQLite library to display the text from the database, This is only reliable enough for one person to use (SQLite does not scale to multiple users well), so for future development, we will use SQLAlchemy.
+This specific version uses Python with Flask and the built-in SQLite library to display the text from the database. SQLite is decent enough to run a small archive, but for greater database support, we will use SQLAlchemy.
 
 ## Usage
 
 ### Download and Install the world4ch Thread Viewer
 
 1. You will need to obtain a copy of the Thread Viewer. If you are reading this, you probably have it here.
-2. Install Python 2.x. Then, install Flask.
+2. Install Python. Then, install Flask.
+3. Install the dependencies with pip:
+    * `pip install -r requirements.txt`
 
 ### Installing the database
 
